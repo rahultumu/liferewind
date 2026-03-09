@@ -1,4 +1,11 @@
+[project]
+name = "ai-life-rewind"
+version = "0.1.0"
+description = "Personal memory search app"
+authors = ["tumur <tumur@example.com>"]
+
 [tool.poetry]
+# Poetry section kept for developers who use poetry locally
 name = "ai-life-rewind"
 version = "0.1.0"
 description = "Personal memory search app"
