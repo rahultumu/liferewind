@@ -1,0 +1,12 @@
+[tool.poetry]
+name = "ai-life-rewind"
+version = "0.1.0"
+description = "Personal memory search app"
+authors = ["tumur <tumur@example.com>"]
+
+[tool.poetry.scripts]
+app = "app:app"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
