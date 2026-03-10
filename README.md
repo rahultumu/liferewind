@@ -111,6 +111,39 @@ Streamlit-based UI with sections for:
 
 ## 🚀 Running the Application
 
+### ⛳ Deploying to Vercel
+To deploy the backend on Vercel you need a FastAPI entrypoint at the repo root. A simple wrapper has been provided:
+
+```python
+# app.py (root of project)
+from backend.main import app
+```
+
+Vercel will automatically detect `app.py` (or `main.py` – the latter was added as an extra fallback) and use the `app` instance. Additionally we have added a minimal `pyproject.toml` with an `app` script that points at the same object; this satisfies Vercel’s entrypoint check when it scans for a poetry project. The TOML now includes a PEP 621 `[project]` table so that `uv lock` (used in the build) can parse it without complaining about a missing `project` table.
+
+Make sure you do **not** commit any secret keys (the `.env` file is now ignored).
+
+If you still see "no fastapi entrypoint found" during deployment, verify that:
+1. `app.py` or `main.py` is at the project root and contains `from backend.main import app`.
+2. `pyproject.toml` exists with `[tool.poetry.scripts]` entry `app = "app:app"`.
+3. You have a valid `vercel.json` file pointing the build at `app.py`.
+4. The correct branch/folder is selected in your Vercel project settings.
+5. Clear Vercel’s build cache or remove/re‑create the project if it continues to use old configuration.
+
+A sample `vercel.json`:
+```json
+{
+  "version": 2,
+  "builds": [
+    { "src": "app.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "\/(.*)", "dest": "app.py" }
+  ]
+}
+```
+
+
 ## 🗄️ Optional Supabase Integration
 To store memories in a hosted PostgreSQL database via Supabase, follow these steps:
 

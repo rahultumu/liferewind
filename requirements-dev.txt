@@ -1,0 +1,6 @@
+# development and frontend dependencies
+streamlit
+openai-whisper
+numpy
+opencv-python
+pillow

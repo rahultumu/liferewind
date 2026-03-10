@@ -9,5 +9,13 @@
   ],
   "routes": [
     { "src": "/(.*)", "dest": "app.py" }
+  ],
+  "excludeFiles": [
+    "tests/**",
+    "frontend/**",
+    "venv/**",
+    "*.md",
+    ".env",
+    "requirements-dev.txt"
   ]
 }
