@@ -1,7 +1,6 @@
 {
   "version": 2,
-  // build settings are now controlled via the dashboard (Settings → Build & Development)
-  // you can configure Python version, install command, and lambda size there.
+
   "routes": [
     { "src": "/(.*)", "dest": "app.py" }
   ],
